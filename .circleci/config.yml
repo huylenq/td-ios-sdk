@@ -12,6 +12,8 @@ jobs:
           name: Install CocoaPods
           command: pod install
 
+      - run: gem install xcpretty
+
       - run:
           name: Build and run tests
           command: >
@@ -20,4 +22,4 @@ jobs:
                     -scheme TreasureData \
                     -sdk iphonesimulator \
                     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' \
-                    test
+                    test | xcpretty && exit ${PIPESTATUS[0]}
