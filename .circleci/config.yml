@@ -22,4 +22,5 @@ jobs:
                     -scheme TreasureData \
                     -sdk iphonesimulator \
                     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' \
+                    -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.4' \
                     test | xcpretty && exit ${PIPESTATUS[0]}
