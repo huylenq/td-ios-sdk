@@ -21,7 +21,7 @@ jobs:
                     -workspace TreasureData.xcworkspace \
                     -scheme TreasureData \
                     -sdk iphonesimulator \
-                    -disable-concurrent-destination-testing
+                    -disable-concurrent-destination-testing \
                     -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.2' \
                     -destination 'platform=iOS Simulator,name=iPhone 7,OS=12.1' \
                     test
