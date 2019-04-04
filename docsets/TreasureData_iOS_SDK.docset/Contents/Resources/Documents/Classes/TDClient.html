@@ -14,7 +14,7 @@
     <a title="TDClient Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">TreasureData_iOS_SDK Docs</a> (77% documented)</p>
+        <p><a href="../index.html">TreasureData_iOS_SDK Docs</a> (88% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,15 +31,6 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/KIOEventStore.html">KIOEventStore</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeenClient.html">KeenClient</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeenProperties.html">KeenProperties</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/TDClient.html">TDClient</a>
               </li>
               <li class="nav-group-task">
@@ -54,9 +45,6 @@
                 <a href="../Type Definitions.html#/c:TreasureData.h@T@ErrorHandler">ErrorHandler</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Type Definitions.html#/c:KeenClient.h@T@KeenGlobalPropertiesBlock">KeenGlobalPropertiesBlock</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Type Definitions.html#/c:TreasureData.h@T@SuccessHander">SuccessHander</a>
               </li>
             </ul>
@@ -69,11 +57,11 @@
             <h1>TDClient</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">TDClient</span> <span class="p">:</span> <span class="nc"><a href="../Classes/KeenClient.html">KeenClient</a></span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">TDClient</span> <span class="p">:</span> <span class="nc">KeenClient</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The internal client using for sending requests. Most of the exposed properties could be configured via the container <code><a href="../Classes/TreasureData.html">TreasureData</a></code> instance. You probably need this only to tuning the retry parameters.</p>
 
           </section>
           <section class="section task-group-section">
@@ -92,14 +80,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The API Key (write-only) uses for this client</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">apiKey</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">apiKey</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -124,14 +112,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The targeting API endpoint, default is <a href="https://in.treasuredata.com">https://in.treasuredata.com</a></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">apiEndpoint</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">apiEndpoint</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -143,12 +131,23 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Retry"></a>
+                <a name="//apple_ref/objc/Section/Retry" class="dashAnchor"></a>
+                <a href="#/Retry">
+                  <h3 class="section-name">Retry</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)TDClient(py)session"></a>
-                    <a name="//apple_ref/objc/Property/session" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TDClient(py)session">session</a>
+                    <a name="/c:objc(cs)TDClient(py)enableRetryUploading"></a>
+                    <a name="//apple_ref/objc/Property/enableRetryUploading" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TDClient(py)enableRetryUploading">enableRetryUploading</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -156,51 +155,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Enable retry if uploading events failed.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span><span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">enableRetryUploading</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)TDClient(py)enableEventCompression"></a>
-                    <a name="//apple_ref/objc/Property/enableEventCompression" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TDClient(py)enableEventCompression">enableEventCompression</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="n">BOOL</span> <span class="n">enableEventCompression</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">enableEventCompression</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">enableRetryUploading</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -220,14 +187,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Waiting time for next retry = <em><code>retryIntervalCoefficient</code></em> x <code>retryIntervalBasebase</code> ^ <code>retryTime</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="kt">int</span> <span class="n">uploadRetryIntervalCoeficient</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">uploadRetryIntervalCoeficient</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -252,14 +219,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Wait time for next retry = <code>retryIntervalCoefficient</code> x <em><code>retryIntervalBasebase</code></em> ^ <code>retryTime</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="kt">int</span> <span class="n">uploadRetryIntervalBase</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">uploadRetryIntervalBase</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -284,14 +251,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The max number of retry</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="kt">int</span> <span class="n">uploadRetryCount</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">uploadRetryCount</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -303,50 +270,34 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)TDClient(py)enableRetryUploading"></a>
-                    <a name="//apple_ref/objc/Property/enableRetryUploading" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TDClient(py)enableRetryUploading">enableRetryUploading</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="n">BOOL</span> <span class="n">enableRetryUploading</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">enableRetryUploading</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deprecated"></a>
+                <a name="//apple_ref/objc/Section/Deprecated" class="dashAnchor"></a>
+                <a href="#/Deprecated">
+                  <h3 class="section-name">Deprecated</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
                     <a name="/c:objc(cs)TDClient(im)initWithApiKey:apiEndpoint:"></a>
                     <a name="//apple_ref/objc/Method/-initWithApiKey:apiEndpoint:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TDClient(im)initWithApiKey:apiEndpoint:">-initWithApiKey:apiEndpoint:</a>
+                    <a class="token discouraged" href="#/c:objc(cs)TDClient(im)initWithApiKey:apiEndpoint:">-initWithApiKey:apiEndpoint:</a>
                     </code>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>Construct from TreasureData instead.</p>
+
+                      </div>
                       <div class="abstract">
                         <p>Undocumented</p>
 
@@ -355,7 +306,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">initWithApiKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">apiKey</span> <span class="nf">apiEndpoint</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">apiEndpoint</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">initWithApiKey</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">apiKey</span> <span class="nf">apiEndpoint</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">apiEndpoint</span> <span class="n">DEPRECATED_MSG_ATTRIBUTE</span><span class="p">(</span><span class="s">"Construct from TreasureData instead."</span><span class="p">);</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -370,15 +321,94 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)TDClient(im)sendHTTPRequest:retryCounter:completionHandler:"></a>
-                    <a name="//apple_ref/objc/Method/-sendHTTPRequest:retryCounter:completionHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TDClient(im)sendHTTPRequest:retryCounter:completionHandler:">-sendHTTPRequest:retryCounter:completionHandler:</a>
+                    <a name="/c:objc(cs)TDClient(py)session"></a>
+                    <a name="//apple_ref/objc/Property/session" class="dashAnchor"></a>
+                    <a class="token discouraged" href="#/c:objc(cs)TDClient(py)session">session</a>
                     </code>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>This will become private property on next version.</p>
+
+                      </div>
+                      <div class="abstract">
+                        <p>The pending session of this client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TDClient(py)enableEventCompression"></a>
+                    <a name="//apple_ref/objc/Property/enableEventCompression" class="dashAnchor"></a>
+                    <a class="token discouraged" href="#/c:objc(cs)TDClient(py)enableEventCompression">enableEventCompression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>Configure this on TreasureData instead.</p>
+
+                      </div>
+                      <div class="abstract">
+                        <p>Enable compression event data payload on uploading requests.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">enableEventCompression</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">enableEventCompression</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TDClient(im)sendHTTPRequest:retryCounter:completionHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-sendHTTPRequest:retryCounter:completionHandler:" class="dashAnchor"></a>
+                    <a class="token discouraged" href="#/c:objc(cs)TDClient(im)sendHTTPRequest:retryCounter:completionHandler:">-sendHTTPRequest:retryCounter:completionHandler:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="aside aside-deprecated">
+                        <p class="aside-title">Deprecated</p>
+                        <p>Don&rsquo;t call this directly, this will become private on next version.</p>
+
+                      </div>
                       <div class="abstract">
                         <p>Undocumented</p>
 
@@ -389,7 +419,7 @@
                           <p class="aside-title">Objective-C</p>
                           <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">sendHTTPRequest</span><span class="p">:(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span>
             <span class="nf">retryCounter</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">retryCounter</span>
-       <span class="nf">completionHandler</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">))</span><span class="nv">completionHandler</span><span class="p">;</span></code></pre>
+       <span class="nf">completionHandler</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">))</span><span class="nv">completionHandler</span> <span class="n">DEPRECATED_MSG_ATTRIBUTE</span><span class="p">(</span><span class="s">"Don't call this directly, this will become private on next version."</span><span class="p">);</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -406,7 +436,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-02)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

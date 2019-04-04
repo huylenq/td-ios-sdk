@@ -13,7 +13,7 @@
     <a title="TreasureData_iOS_SDK  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">TreasureData_iOS_SDK Docs</a> (77% documented)</p>
+        <p><a href="index.html">TreasureData_iOS_SDK Docs</a> (88% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -30,15 +30,6 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/KIOEventStore.html">KIOEventStore</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/KeenClient.html">KeenClient</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/KeenProperties.html">KeenProperties</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/TDClient.html">TDClient</a>
               </li>
               <li class="nav-group-task">
@@ -51,9 +42,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Type Definitions.html#/c:TreasureData.h@T@ErrorHandler">ErrorHandler</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Type Definitions.html#/c:KeenClient.h@T@KeenGlobalPropertiesBlock">KeenGlobalPropertiesBlock</a>
               </li>
               <li class="nav-group-task">
                 <a href="Type Definitions.html#/c:TreasureData.h@T@SuccessHander">SuccessHander</a>
@@ -378,29 +366,43 @@
 </code></pre>
 <pre class="highlight plaintext"><code>    [TreasureData disableLogging];
 </code></pre>
-<h3 id='auto-track-in-app-purchase-event' class='heading'>Auto track In-App Purchase event</h3>
+<h3 id='automatically-tracked-events' class='heading'>Automatically tracked events</h3>
 
-<p>TreasureData SDK able to automatically track IAP <code>SKPaymentTransactionStatePurchased</code> event without having to write your own transaction observer.</p>
-<pre class="highlight plaintext"><code>    [[TreasureData sharedInstance] enableInAppPurchaseEvent];
-    [[TreasureData sharedInstance] disableInAppPurchaseEvent];
-    [[TreasureData sharedInstance] isInAppPurchaseEventEnabled];
+<p>Notes that all of these are *<em>disabled by default</em>, you have to explicitly enable it for each category.</p>
+<h4 id='app-lifecycle-events' class='heading'>App Lifecycle Events</h4>
+
+<p>Could be enabled with:</p>
+<pre class="highlight plaintext"><code>[[TreasureData sharedInstance] enableAppLifecycleEvent];
 </code></pre>
 
-<p>This is disabled by default. There is a subtle difference between this and <code>appLifecycleEvent</code>, <code>customEvent</code>. <code>appLifecycleEvent</code> and <code>customEvent</code>, for a historical reason, are persistent settings, meaning their statuses are saved across app launches. <code>inAppPurchaseEvent</code> behaves like an ordinary object options and are not saved, have you to explicitly enable it when construct a <code><a href="Classes/TreasureData.html">TreasureData</a></code> instance.</p>
+<p>There are 3 type of app lifecycle events that are tracked: <code>TD_IOS_APP_OPEN</code>, <code>TD_IOS_APP_INSTALL</code> and <code>TD_IOS_APP_UPDATE</code> (is written to <code>td_ios_event</code> column).</p>
+
+<p>Example of a tracked install event:</p>
+<pre class="highlight plaintext"><code>"td_ios_event" = "TD_IOS_APP_INSTALL";
+"td_app_ver" = "1.1";
+"td_app_ver_num" = 2;
+</code></pre>
+<h4 id='in-app-purchase-events' class='heading'>In-App Purchase Events</h4>
+
+<p>TreasureData SDK is able to automatically track IAP <code>SKPaymentTransactionStatePurchased</code> event without having to write your own transaction observer.</p>
+<pre class="highlight plaintext"><code>[[TreasureData sharedInstance] enableInAppPurchaseEvent];
+</code></pre>
+
+<p>This is disabled by default. There is a subtle difference between this and <code>appLifecycleEvent</code>, <code>customEvent</code>. The other two, for a historical reason, are persistent settings, meaning their statuses are saved across app launches. <code>inAppPurchaseEvent</code> behaves like an ordinary object option and is not saved. You have to enable it after initialize your new <code><a href="Classes/TreasureData.html">TreasureData</a></code> instance (probably only the <code>sharedInstance</code> with <code>initializeWithApiKey()</code>).</p>
 
 <p>An example of a IAP event:</p>
-<pre class="highlight plaintext"><code>    "td_ios_event": "TD_IOS_IN_APP_PURCHASE",
-    "td_iap_transaction_identifier": "1000000514091400",
-    "td_iap_transaction_date": "2019-03-28T08:44:12+07:00",
-    "td_iap_quantity": 1,
-    "td_iap_product_identifier": "com.yourcompany.yourapp.yourproduct", ,
-    "td_iap_product_price": 0.99,
-    "td_iap_product_localized_title": "Your Product Title",
-    "td_iap_product_localized_description": "Your Product Description",
-    "td_iap_product_currency_code": "USD",  // this is only available on iOS 10 and above
+<pre class="highlight plaintext"><code>"td_ios_event": "TD_IOS_IN_APP_PURCHASE",
+"td_iap_transaction_identifier": "1000000514091400",
+"td_iap_transaction_date": "2019-03-28T08:44:12+07:00",
+"td_iap_quantity": 1,
+"td_iap_product_identifier": "com.yourcompany.yourapp.yourproduct", ,
+"td_iap_product_price": 0.99,
+"td_iap_product_localized_title": "Your Product Title",
+"td_iap_product_localized_description": "Your Product Description",
+"td_iap_product_currency_code": "USD",  // this is only available on iOS 10 and above
 </code></pre>
 
-<p>We did a separated <code>SKProductsRequest</code> to get full product&rsquo;s information. If the request is failed somehow, fields with <q>td_iap_product_</q> prefix will be null. Also note that that the <code>currency_code</code> is only available from iOS 10 onwards.</p>
+<p>We will do a separated <code>SKProductsRequest</code> to get full product&rsquo;s information. If the request is failed somehow, fields with <q>td_iap_product_</q> prefix will be null. Also note that that the <code>currency_code</code> is only available from iOS 10 onwards.</p>
 <h2 id='gdpr-compliance' class='heading'>GDPR Compliance</h2>
 
 <p>The SDK provide some convenient methods to easily opt-out of tracking the device entirely without having to resort to many cluttered if-else statements:</p>
@@ -439,7 +441,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-02)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

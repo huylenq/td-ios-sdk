@@ -14,7 +14,7 @@
     <a title="TreasureData Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">TreasureData_iOS_SDK Docs</a> (77% documented)</p>
+        <p><a href="../index.html">TreasureData_iOS_SDK Docs</a> (88% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,15 +31,6 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/KIOEventStore.html">KIOEventStore</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeenClient.html">KeenClient</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeenProperties.html">KeenProperties</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/TDClient.html">TDClient</a>
               </li>
               <li class="nav-group-task">
@@ -52,9 +43,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Type Definitions.html#/c:TreasureData.h@T@ErrorHandler">ErrorHandler</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Type Definitions.html#/c:KeenClient.h@T@KeenGlobalPropertiesBlock">KeenGlobalPropertiesBlock</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Type Definitions.html#/c:TreasureData.h@T@SuccessHander">SuccessHander</a>
@@ -73,7 +61,17 @@
 
                 </div>
               </div>
-            <p>SDK interface entry</p>
+            <p>The main interface for the SDK. All initialization and configuration (except retry parameters) could be done through here.</p>
+
+<p>Minimal example:</p>
+<pre class="highlight objective_c"><code> <span class="p">[</span><span class="n">TreasureData</span> <span class="nf">initializeWithApiKey</span><span class="p">:</span><span class="s">@"&lt;your_write_only_api_key&gt;"</span><span class="p">];</span>
+
+ <span class="p">[[</span><span class="n">TreasureData</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">addEvent</span><span class="p">:@{</span><span class="s">@"welcome"</span><span class="o">:</span> <span class="s">@"Hello world"</span><span class="p">}</span>
+                                <span class="nf">database</span><span class="p">:</span><span class="s">@"my_db"</span>
+                                <span class="n">table</span><span class="o">:</span><span class="s">@"my_ios_events"</span><span class="p">];</span>
+
+ <span class="p">[[</span><span class="n">TreasureData</span> <span class="nf">sharedInstance</span><span class="p">]</span> <span class="nf">uploadEvents</span><span class="p">];</span>
+</code></pre>
 
           </section>
           <section class="section task-group-section">
@@ -92,7 +90,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Inner client, automatically initialized. Additional parameters like request retrying could be configured here.</p>
+                        <p>Inner client responsible for uploading events, automatically initialized. Additional parameters like request retrying could be configured here.</p>
 
                       </div>
                       <div class="declaration">
@@ -175,6 +173,17 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/objc/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -397,6 +406,17 @@ This should be called only once and prior to any <code>addEvent...</code> call.<
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Tracking%20events"></a>
+                <a name="//apple_ref/objc/Section/Tracking events" class="dashAnchor"></a>
+                <a href="#/Tracking%20events">
+                  <h3 class="section-name">Tracking events</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -858,6 +878,17 @@ This should be called only once and prior to any <code>addEvent...</code> call.<
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Events&#39;%20metadata"></a>
+                <a name="//apple_ref/objc/Section/Events&#39; metadata" class="dashAnchor"></a>
+                <a href="#/Events&#39;%20metadata">
+                  <h3 class="section-name">Events&#39; metadata</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1389,70 +1420,6 @@ Note: this won&rsquo;t reset the current buffered events before this call</p>
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)TreasureData(im)enableRetryUploading"></a>
-                    <a name="//apple_ref/objc/Method/-enableRetryUploading" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TreasureData(im)enableRetryUploading">-enableRetryUploading</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Enable retrying on failed uploads. Already enabled by default.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">enableRetryUploading</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">enableRetryUploading</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)TreasureData(im)disableRetryUploading"></a>
-                    <a name="//apple_ref/objc/Method/-disableRetryUploading" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)TreasureData(im)disableRetryUploading">-disableRetryUploading</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Do not attempt to retry on failed uploads.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">disableRetryUploading</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disableRetryUploading</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -1543,7 +1510,7 @@ Note: this won&rsquo;t reset the current buffered events before this call</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Same as <code>-[TreasureData startSession:database]</code>, using <code>+[TreasureData defaultDatabase]</code> as the destination database for <code>td_session_event</code>.</p>
+                        <p>Same as <code><a href="../Classes/TreasureData.html#/c:objc(cs)TreasureData(im)startSession:database:">-[TreasureData startSession:database:]</a></code>, using <code>+[TreasureData defaultDatabase]</code> as the destination database for <code>td_session_event</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -2169,6 +2136,74 @@ This is a persistent setting, able to set through <code>enableAppLifecycleEvent<
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)TreasureData(im)enableRetryUploading"></a>
+                    <a name="//apple_ref/objc/Method/-enableRetryUploading" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TreasureData(im)enableRetryUploading">-enableRetryUploading</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enable retrying on failed uploads. Already enabled by default.</p>
+
+<p>Use <code><a href="../Classes/TreasureData.html#/c:objc(cs)TreasureData(py)client">TreasureData.client</a></code> for further retry&rsquo;s customization</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">enableRetryUploading</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">enableRetryUploading</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)TreasureData(im)disableRetryUploading"></a>
+                    <a name="//apple_ref/objc/Method/-disableRetryUploading" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)TreasureData(im)disableRetryUploading">-disableRetryUploading</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Do not attempt to retry on failed uploads.</p>
+
+<p>Use <code><a href="../Classes/TreasureData.html#/c:objc(cs)TreasureData(py)client">TreasureData.client</a></code> for further retry&rsquo;s customization</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">disableRetryUploading</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disableRetryUploading</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)TreasureData(cm)enableEventCompression"></a>
                     <a name="//apple_ref/objc/Method/+enableEventCompression" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)TreasureData(cm)enableEventCompression">+enableEventCompression</a>
@@ -2618,7 +2653,7 @@ This is a persistent setting, able to set through <code>enableAppLifecycleEvent<
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-02)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/treasure-data/td-ios-sdk" target="_blank" rel="external">mitsu and huylenq</a>. All rights reserved. (Last updated: 2019-04-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
